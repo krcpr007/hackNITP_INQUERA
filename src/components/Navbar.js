@@ -1,4 +1,6 @@
 import {Link} from 'react-router-dom'
+import logo from './logo.png'
+
 function Navbar() {
   const auth = localStorage.getItem('inquera-user')
   // @to-do
@@ -7,12 +9,12 @@ function Navbar() {
     
   }
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl dark:bg-gray-800 ">
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl dark:bg-[#061229] ">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <a href="#" className="flex">
          {/* <>logo will come here</> */}
-          <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
-            InQuera
+          <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
+            <h3 class="px-2 font-extrabold text-3xl font-serif flex">In<img src={logo} class="h-8" />uera</h3>
           </span>
         </a>
         <div className="flex md:order-2">
