@@ -1,0 +1,16 @@
+{
+  "name": "inquera",
+  "version": "1.0.0",
+  "description": "hacknitp4.0 hackthon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "team wizard",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.2.1"
+  }
+}
