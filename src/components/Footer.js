@@ -2,13 +2,15 @@ import React from 'react'
 import {FaFacebookSquare, FaTwitterSquare} from 'react-icons/fa'
 import {FaYoutubeSquare} from 'react-icons/fa'
 function Footer() {
+    const date= new Date()
+    const year = date.getFullYear(); 
   return (
     <footer className="p-10 footer bg-slate-900 text-neutral-content">
   <div>
     {/* logo with title of website  */}
     <h1 className='font-bold text-xl'>InQuera </h1> 
     <p>Inquera pvt ltd.
-      <br/>All copyrights reseverd @Inquera
+      <br/>All copyrights reseverd @Inquera {year}
     </p>
   </div> 
   <div>
