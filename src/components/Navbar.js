@@ -1,4 +1,5 @@
 import { Link,useNavigate,useLocation  } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "./logo.png";
 function Navbar() {
   const navigate =useNavigate(); 
@@ -6,6 +7,7 @@ function Navbar() {
   const auth = localStorage.getItem("inquera-user");
   const handleLogout = () => {
       localStorage.removeItem('inquera-user'); 
+      toast.success("Log out succesfully")
       navigate('/login')
   }
   const pathMatchRoute= (route)=>{
@@ -20,12 +22,12 @@ function Navbar() {
   }
   return (
   <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl dark:bg-[#061229]">
-  <div className="container flex flex-wrap justify-between items-center mx-auto">
-  <Link to="/" className="flex">
+    <div className="container flex flex-wrap justify-between items-center mx-auto">
+        <Link to="/" className="flex">
           <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
             <h3 className="px-2 font-extrabold text-2xl md:text-4xl font-serif flex">
              In
-              <img src={logo} className="h-8" alt="logo" />
+              <img src={logo} className="h-9" alt="logo" />
               uera
             </h3>
           </span>
@@ -53,26 +55,26 @@ function Navbar() {
          </Link>
        </li>
        <li>
-         <Link to="/addQuery" className={` ${pathMatchRoute('/addQuery')?'text-yellow-300 font-medium ':null} block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white`} aria-current="page"
+         <Link to="/addQuery" className={` ${pathMatchRoute('/addQuery')?'dark:text-yellow-300 font-medium ':null} block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`} aria-current="page"
          >
            Ask Query
          </Link>
        </li>
        <li>
          <Link
-           to="/about"  className={`${pathMatchRoute('/about')?'text-yellow-300 font-medium':null}  "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"`}
+           to="/about"  className={`${pathMatchRoute('/about')?'dark:text-yellow-300 font-medium':null}  "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"`}
          >
            About
          </Link>
        </li>
        <li>
-          <Link to="/yoursQuery" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          <Link to="/yoursQuery" className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathMatchRoute('/yoursQuery')?'dark:text-yellow-300 font-medium':null} `}
           >
             Yours Query
           </Link>
         </li>
        <li>
-         <Link to="/contact" className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathMatchRoute('/contact')?'text-yellow-400':null}`}
+         <Link to="/contact" className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathMatchRoute('/contact')?'dark:text-yellow-400 font-medium':null}`}
          >
            Contact us
          </Link>

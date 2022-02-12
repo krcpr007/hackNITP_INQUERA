@@ -65,10 +65,17 @@ function SubmitAns() {
         })}
 
         </div>
-            <div className='container px-10 md:px-96  md:py-28'>
-              <h1>Add your answer</h1>
+            <div className='container px-10 md:px-40  md:py-10'>
               <form>
-                <textarea className='justify-center rounded-lg input h-20 w-full bg-slate-800' onChange={(e)=>setAnswer(e.target.value)}/>
+                {/* <textarea className='justify-center rounded-lg input border-none border-b-2 border-yellow-300 h-20 w-full bg-slate-800' onChange={(e)=>setAnswer(e.target.value)}/> */}
+                <div class="form-control my-1">
+                <label class="label">
+                </label> 
+                <label class="input-group input-group-vertical input-group-lg">
+                  <span className='bg-slate-900'>Write your answer</span> 
+                  <textarea type="text" placeholder="Type Your answer" class="input input-bordered input-lg w-full h-24" onChange={(e)=>setAnswer(e.target.value)}/>
+                </label>
+              </div>
                 <button type='submit' className='btn btn glass bg-[#04293A]' value={answer} onClick={submitAnswer}> Submit</button>
               </form>
             </div>
