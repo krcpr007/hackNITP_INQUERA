@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link } from 'react-router-dom'; 
 function QueryCard({title,query, tags, name, email ,_id}) {
-  // const  = item; 
   return (
   <div className="card lg:card-side card-bordered text m-11">
     <Link to={`/polls/${_id}`}>
