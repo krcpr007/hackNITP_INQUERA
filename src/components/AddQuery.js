@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import { toast } from 'react-toastify';
-
+import {useNavigate} from 'react-router-dom'; 
 function AddQuery() {
     const auth = localStorage.getItem('inquera-user'); 
     const profileData= JSON.parse(auth)
     const name= profileData.name; 
     const email= profileData.email; 
+    const userId= profileData._id; 
+    const navigate = useNavigate(); 
     const [title, setTitle] = useState('');
     const [query, setQuery] = useState('');
     const [tags, setTags] = useState(''); 
@@ -14,7 +16,7 @@ function AddQuery() {
     console.warn(title, query, tags); 
      let result= await fetch(`http://localhost:5000/create-query`,{
           method:"post", 
-          body:JSON.stringify({ title,query,tags, name,email}),
+          body:JSON.stringify({ title,query,tags, name,email, userId}),
           headers: {
             "Content-Type": "application/json",
           },
@@ -23,6 +25,7 @@ function AddQuery() {
       if(result){
           toast.success("Submited succesfully")
           console.warn(result);
+          navigate('/')
       }else{
         toast.error("Something went wrong"); 
       }
