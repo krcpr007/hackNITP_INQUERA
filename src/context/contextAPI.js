@@ -1,10 +1,9 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const ContextAPI = createContext();
 export function PollsHubContextProvider({ children }) {
   const navigate = useNavigate();
-
   // signup
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,6 +44,8 @@ export function PollsHubContextProvider({ children }) {
       localStorage.setItem("inquera-user", JSON.stringify(result));
       navigate("/");
       toast.success("Loged In succesfully");
+      setEmail("");
+      setPassword("");
     } else {
       // alert("please enter correct details");
       toast.error("Please Enter correct Details");
