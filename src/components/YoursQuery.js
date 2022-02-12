@@ -22,7 +22,7 @@ function YoursQuery() {
   },[])
   return (
     <>
-     <div>
+     <div className='bg-[#0e1e2c]'>
        <div>
          {data.map((item)=>{
             return <QueryCard key={item._id} title={item.title} query={item.query} _id={item._id} name={item.name} />
