@@ -1,6 +1,7 @@
 import React from 'react'
 import {FaFacebookSquare, FaTwitterSquare} from 'react-icons/fa'
-import {FaYoutubeSquare} from 'react-icons/fa'
+import {FaYoutubeSquare} from 'react-icons/fa';
+import logo from './logo.png'
 function Footer() {
     const date= new Date()
     const year = date.getFullYear(); 
@@ -8,21 +9,23 @@ function Footer() {
     <footer className="p-10 footer bg-slate-900 text-neutral-content">
   <div>
     {/* logo with title of website  */}
-    <h1 className='font-bold text-xl'>InQuera </h1> 
-    <p>Inquera pvt ltd.
+    <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
+            <h3 className="px-2 font-extrabold text-3xl font-serif flex">In<img src={logo} className="h-8" />uera</h3>
+          </span>
+    <p className='font-medium text-[#FFE400]'>Inquera Pvt Ltd.
       <br/>All copyrights reseverd @Inquera {year}
     </p>
   </div> 
   <div>
     <span className="footer-title">Social Links</span> 
-    <div className="grid grid-flow-col gap-4">
-      <a>
+    <div className="grid grid-flow-col gap-4 text-[#FFE400]">
+      <a href='htpps://www.facebook.com'>
        <FaFacebookSquare size="30"/>
       </a> 
-      <a>
+      <a href='https://www.youtube.com'>
         <FaYoutubeSquare size={30}/>
       </a> 
-      <a>
+      <a href='https://www.twitter.com'>
         <FaTwitterSquare size={30}/>
       </a>
     </div>
