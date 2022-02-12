@@ -53,7 +53,7 @@ app.post("/login", async (req, resp) => {
   }
 });
 
-// api for add new polls
+// api for add new Query
 app.post("/create-query", async (req, resp) => {
   try {
     let poll = new Polls(req.body);
@@ -62,9 +62,8 @@ app.post("/create-query", async (req, resp) => {
   } catch (error) {
     resp.send("Error");
   }
-  // console.log(result, req.files);
 });
-// all polls available on database
+// all Query available on database
 app.get("/all-query", async (req, resp) => {
   let polls = await Polls.find({});
   if (polls) {
@@ -75,7 +74,7 @@ app.get("/all-query", async (req, resp) => {
 });
 // get all yours answers
 
-// answering the polls
+// answering the Query
 app.post("/answering", async (req, resp) => {
   try {
     let answer = new Answers(req.body);
@@ -84,7 +83,7 @@ app.post("/answering", async (req, resp) => {
   } catch (error) {
     resp.send("Error");
   }
-  // console.log(result, req.files);
+  
 });
 app.get('/polls/:id', async(req,resp)=>{
   try {
@@ -106,6 +105,16 @@ app.get('/answers/:id', async(req, resp)=>{
     }
   } catch (error) {
     console.log(error); 
+    
+  }
+})
+app.post('/yours-query', async(req,resp)=>{
+  try {
+    let yourQuery = await Polls.find(req.body)
+    if(yourQuery){
+      resp.send(yourQuery); 
+    }
+  } catch (error) {
     
   }
 })
