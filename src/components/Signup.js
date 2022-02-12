@@ -1,7 +1,7 @@
 import React, {useEffect,useContext } from "react";
 import { Link , useNavigate} from "react-router-dom";
-// import { toast } from "react-toastify";
 import ContextAPI from "../context/contextAPI";
+import logo from "./logo.png";
 const Signup = () => {
   const {CollectData ,setName , setEmail,setPassword} = useContext(ContextAPI); 
   const navigate =useNavigate(); 
@@ -10,25 +10,27 @@ const Signup = () => {
         if(auth){
           navigate('/')
         }
-    }, [])
+    },)
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-[#0e1e2c]">
       <div className="flex-col justify-center hero-content lg:flex-row">
         <div className="text-center lg:text-left">
-          <h1 className="mb-5 text-5xl font-bold">Hello there!!</h1>
-          <p className="mb-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium
-            quibusdam optio, incidunt delectus mollitia, autem laboriosam
-            repudiandae commodi, quae est dolorum? Consequuntur id corrupti nemo
-            laboriosam nam inventore, debitis quam. Nemo qui deleniti esse
-            doloribus commodi quia, culpa sapiente officia, eius earum odit
-            voluptatibus enim ut quisquam repellendus ullam facilis a rem
-            obcaecati? Assumenda laborum eaque, quisquam perspiciatis ad
-            voluptates!
+          <h1 className="mb-5 text-5xl font-bold">
+          <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
+            <h3 className="px-2 font-extrabold text-6xl font-serif flex">
+              In
+              <img src={logo} className="h-16" alt="logo" />
+              uera
+            </h3>
+          </span>
+          </h1>
+          <p className="mb-5 font-medium text-yellow-400">
+          We believe in unity together we can get the answer to any question so lets begin one step  forward to get answers with InQuera. <br />
+          Inquera is Based on MERN Stack.
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <div className="card-body bg-slate-900">
             <form>
               <div className="form-control">
                 <label className="label">
@@ -37,7 +39,7 @@ const Signup = () => {
                 <input
                   type="text"
                   placeholder="Name"
-                  className="input input-bordered border-primary"
+                  className="input input-warning input-bordered bg-[#0e1e2c]"
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
@@ -49,7 +51,7 @@ const Signup = () => {
                 <input
                   type="email"
                   placeholder="email"
-                  className="input input-bordered border-primary"
+                  className="input input-warning input-bordered bg-[#0e1e2c]"
                   onChange={e=> setEmail(e.target.value)}
                   required
                 />
@@ -61,7 +63,7 @@ const Signup = () => {
                 <input
                   type="password"
                   placeholder="password"
-                  className="input input-bordered border-primary"
+                  className="input input-warning input-bordered bg-[#0e1e2c]"
                   onChange={e=>setPassword(e.target.value)}
                   required
                   
@@ -73,8 +75,8 @@ const Signup = () => {
                 </label>
               </div>
               <div className="form-control mt-5">
-                <button type="subtmit" className="btn btn-primary" onClick={CollectData}>
-                  Login
+                <button type="subtmit" className="btn btn glass bg-[#04293A] active:loading" onClick={CollectData}>
+                  SignUp
                 </button>
               </div>
             </form>
