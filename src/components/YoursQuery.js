@@ -3,8 +3,8 @@ import QueryCard from './QueryCard';
 
 function YoursQuery() {
   const auth = localStorage.getItem('inquera-user'); 
-    const profileData= JSON.parse(auth)
-    const userId= profileData._id; 
+  const profileData= JSON.parse(auth)
+  const userId= profileData._id; 
   const [data, setData] = useState([]);
   useEffect(async()=>{
      let result =    await fetch(`http://localhost:5000/yours-query`,{
@@ -25,7 +25,7 @@ function YoursQuery() {
      <div>
        <div>
          {data.map((item)=>{
-            return <QueryCard key={item._id} title={item.title} query={item.query} _id={item._id} name={item.name} />
+            return <QueryCard key={item._id} title={item.title} query={item.query} _id={item._id} name={item.name}  />
          })}
        </div>
      </div>
