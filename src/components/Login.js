@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useContext} from "react";
+import React, { useEffect , useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ContextAPI from "../context/contextAPI";
 
@@ -11,7 +11,7 @@ function Login() {
     if(auth){
       navigate('/')
     }
-}, [])
+},)
   return (
     <div className="hero min-h-screen bg-[#0e1e2c]">
       <div className="flex-col justify-center hero-content lg:flex-row">
@@ -61,7 +61,7 @@ function Login() {
                   type="submit"
                   value="Login"
                   onClick={handleLogin}
-                  className="btn btn glass bg-[#04293A] active:loading"
+                  className="btn btn glass bg-[#04293A] "
                 >
                   Login
                 </button>

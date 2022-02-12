@@ -10,7 +10,7 @@ function Footer() {
   <div>
     {/* logo with title of website  */}
     <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
-            <h3 className="px-2 font-extrabold text-3xl font-serif flex">In<img src={logo} className="h-8" />uera</h3>
+            <h3 className="px-2 font-extrabold text-3xl font-serif flex">In<img src={logo} className="h-8" alt='logo' />uera</h3>
           </span>
     <p className='font-medium text-[#FFE400]'>Inquera Pvt Ltd.
       <br/>All copyrights reseverd @Inquera {year}

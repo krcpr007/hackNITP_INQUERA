@@ -75,7 +75,7 @@ const Signup = () => {
                 </label>
               </div>
               <div className="form-control mt-5">
-                <button type="subtmit" className="btn btn glass bg-[#04293A] active:loading" onClick={CollectData}>
+                <button type="subtmit" className="btn btn glass bg-[#04293A]" onClick={CollectData}>
                   SignUp
                 </button>
               </div>

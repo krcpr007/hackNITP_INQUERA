@@ -14,7 +14,7 @@ function Error() {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm bg-[#061229]">
-          <img src={logo} className="h-max w-max" />
+          <img src={logo} className="h-max w-max" alt='404.gif' />
         </div>
       </div>
     </div>
