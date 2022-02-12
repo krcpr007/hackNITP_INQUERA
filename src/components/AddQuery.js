@@ -36,25 +36,25 @@ function AddQuery() {
         <div>
           <h1 className='text-xl md:text-3xl pt-3 text-center'>Enter your Query or anything </h1>
         </div>
-        <div className="p-5 md:p-10 flex">
+        <div className="p-5 md:p-10 md:flex ">
         <div className='card-body rounded-3xl bg-slate-800 shadow-2xl lg:w-[40rem]  '>
         <div className='md:px-20 '>
             <form> 
-              <div className="form-control lg:w-[30]">
-                <label htmlFor="title" className='label'>Title</label>
-                <input className='input bg-[#0e1e2c]' onChange={(e)=>setTitle(e.target.value)} placeholder='Title' type="text" />
-              </div>
-              <div className="form-control lg:w-[30]">
-                <label htmlFor="query" className='label'>Query</label>
-                <textarea className='input bg-[#0e1e2c]'onChange={(e)=>setQuery(e.target.value)} placeholder='Ask your Query' type="text" />
-              </div>
-              <div className="form-control w-[30]">
-                <label htmlFor="tags" className='label'>Tag</label>
-                <input className='input bg-[#0e1e2c]'onChange={(e)=>setTags(e.target.value)} placeholder='Tag' type="text" />
-              </div>
-              <div className="form-contorl">
-              <button type='submit' onClick={AskQuery} className='btn glass my-5 md:w-1/2 bg-[#04293A] '>Submit</button>
-              </div>
+                <div className="form-control lg:w-[30]">
+                  <label htmlFor="title" className='label'>Title</label>
+                  <input className='input bg-[#0e1e2c]' onChange={(e)=>setTitle(e.target.value)} placeholder='Title' type="text" />
+                </div>
+                <div className="form-control lg:w-[30]">
+                  <label htmlFor="query" className='label'>Query</label>
+                  <textarea className='input bg-[#0e1e2c]'onChange={(e)=>setQuery(e.target.value)} placeholder='Ask your Query' type="text" />
+                </div>
+                <div className="form-control w-[30]">
+                  <label htmlFor="tags" className='label'>Tag</label>
+                  <input className='input bg-[#0e1e2c]'onChange={(e)=>setTags(e.target.value)} placeholder='Tag' type="text" />
+                </div>
+                <div className="form-contorl">
+                <button type='submit' onClick={AskQuery} className='btn glass my-5 md:w-1/2 bg-[#04293A] '>Submit</button>
+                </div>
             </form>
           </div>
         </div>

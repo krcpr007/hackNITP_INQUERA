@@ -34,7 +34,7 @@ function App() {
             </Route>
             <Route path="/*" element={<Error />} />
           </Routes>
-          <ToastContainer />
+          <ToastContainer theme="dark" />
           <Footer />
         </PollsHubContextProvider>
       </BrowserRouter>
