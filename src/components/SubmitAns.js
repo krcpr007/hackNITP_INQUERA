@@ -1,48 +1,70 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'; 
 import { toast } from 'react-toastify';
+import AnswerCard from './AnswerCard';
 import QueryCard from './QueryCard';
 function SubmitAns() {
+  const [ansData , setAnsData] = useState([]); 
+  const [answer , setAnswer] =useState(' ');
   const auth = localStorage.getItem('inquera-user'); 
   const profileData= JSON.parse(auth)
   const name= profileData.name; 
   const email= profileData.email; 
-  const userId= profileData._id;
   const {id}= useParams();
   const queryId = id;
   let likes=0; 
   const [data, setData]= useState({});
-  const [answer , setAnswer] =useState(' '); 
   const submitAnswer= async(e)=>{
     e.preventDefault(); 
-    let answer = await fetch(`http://localhost:5000/answering`, {
+    let answering = await fetch(`http://localhost:5000/answering`, {
       method:"post", 
       body:JSON.stringify({queryId,answer, name,email,likes}),
       headers: {
         "Content-Type": "application/json",
       },
     })
-    answer = await answer.json()
-    if(answer){
-      console.log(answer); 
+    answering = await answering.json()
+    if(answering){
+      console.log(answering); 
+      fetchAnswers();
       toast.success("Submited")
     }
   }
   useEffect(async()=>{
-     await  fetch(`http://localhost:5000/polls/${id}`)
-      .then((resp)=>resp.json())
-      .then((data)=>{
-        console.log(data); 
-        setData(data);
-      }).catch((Error)=>{
-        console.log(Error); 
-      })
+    fetchQuery();
+    fetchAnswers();
   },[])
+  const fetchQuery = async()=>{
+    await  fetch(`http://localhost:5000/polls/${id}`)
+    .then((resp)=>resp.json())
+    .then((data)=>{
+      console.log(data); 
+      setData(data);
+    }).catch((Error)=>{
+      console.log(Error); 
+    })
+  }
+  const fetchAnswers= async ()=>{
+    await fetch(`http://localhost:5000/answers/${id}`)
+    .then((resp)=>resp.json())
+    .then((ansData)=>{
+        console.log(ansData);
+         setAnsData(ansData); 
+    }).catch((e)=>{
+      console.log(e);
+    })
+
+  }
   return (
-    <div>
+    <div className=''>
         <div>
         <QueryCard title={data.title} name={data.name} query={data.query} tags={data.tags} name={data.name} email={data.email} _id={data._id} />
+        <div className='px-3 md:px-20'>
+        {ansData.map((item)=>{
+          return <AnswerCard key={item._id} answer={item.answer} email={item.email} name={item.name} likes={item.likes} />
+        })}
 
+        </div>
             <div className='container px-10 md:px-96  md:py-28'>
               <h1>Add your answer</h1>
               <form>
