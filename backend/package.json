@@ -4,11 +4,13 @@
   "description": "hacknitp4.0 hackthon",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "author": "team wizard",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.1"
