@@ -1,6 +1,6 @@
 import React from "react";
 import Rajan from './assets/Rajan.jpg'; 
-import Ayushi from './assets/ayushi.png'; 
+import Ayushi from './assets/Ayushi.png'; 
 import Rajneesh from './assets/Rajaneesh.jpg'; 
 import Payal from './assets/payalBharti.jpg';
 function About() {
