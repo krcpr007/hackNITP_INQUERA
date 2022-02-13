@@ -34,6 +34,7 @@ function Login() {
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
+                  required
                 />
               </div>
               <div className="form-control">
@@ -46,6 +47,7 @@ function Login() {
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  required
                 />
                 <label className="label text-sky-600 text-sm ">
                   <a href="/" className="hover:text-yellow-200">
