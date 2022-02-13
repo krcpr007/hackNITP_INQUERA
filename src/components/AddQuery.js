@@ -61,7 +61,6 @@ function AddQuery() {
         <div className='m-5 md:p-10 lg:w-1/2 '>
           <h3 className='px-2 font-extrabold text-xl md:text-2xl font-serif text-yellow-400 underline'>Community Rules</h3>
             <ul className='pl-7 text-xl list-disc text-gray-400'>
-              <li></li>
               <li>Don't upload or post inappropriate content.</li>
               <li>Stay on topic</li>
               <li>Keep it legal.</li>
