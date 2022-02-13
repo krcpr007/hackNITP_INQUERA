@@ -51,21 +51,21 @@ function AnswerCard({name, email ,answer,likes,id,fetchAnswerFun, userId}) {
           <button className="bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-1 px-2 border  hover:border-transparent rounded flex"> <FaHeart className="m-1"/> <span className=""> {likes} </span> </button>
            {
              userId===profileData._id?(<>
-              <label for="my-modal-2" class="modal-button bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-2 border  hover:border-transparent rounded cursor-pointer ">
+              <label htmlFor="my-modal-2" className="modal-button bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-2 border  hover:border-transparent rounded cursor-pointer ">
               <FiEdit />
               </label> 
-                <input type="checkbox" id="my-modal-2" class="modal-toggle"/> 
-                <div class="modal">
-                  <div class="modal-box">
+                <input type="checkbox" id="my-modal-2" className="modal-toggle"/> 
+                <div className="modal">
+                  <div className="modal-box">
                    <form action="">
                       <label className="input-group input-group-vertical input-group-lg">
                       <span className='bg-slate-900'>Update your answer</span> 
                       <textarea type="text" placeholder="Type Your answer" className="input input-bordered input-lg w-full h-24"  value={newAns} onChange={(e)=>setNewAns(e.target.value)} />
                     </label>
                      </form> 
-                    <div class="modal-action">
-                      <label for="my-modal-2" class="btn btn-primary" onClick={updateAnswer}>Update</label> 
-                      <label for="my-modal-2" class="btn">Close</label>
+                    <div className="modal-action">
+                      <label htmlFor="my-modal-2" className="btn btn-primary" onClick={updateAnswer}>Update</label> 
+                      <label htmlFor="my-modal-2" className="btn">Close</label>
                     </div>
                   </div>
                 </div>
