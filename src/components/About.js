@@ -1,6 +1,6 @@
 import React from "react";
 import Rajan from './assets/Rajan.jpg'; 
-import Ayushi from './assets/Ayushi.png'; 
+import Ayushi from './assets/ayushi.png'; 
 import Rajneesh from './assets/Rajaneesh.jpg'; 
 import Payal from './assets/payalBharti.jpg';
 function About() {
@@ -26,20 +26,6 @@ function About() {
             <h1 className="text-2xl font-bold text-rose-500">Creaters</h1>
             <hr />
             <h1 className="text-center text-3xl text-yellow-400 font-serif">Team Wizard</h1>
-            {/* <ul className="justify-center">
-              <li>
-                Ayushi Gupta
-              </li>
-              <li>
-                Payal bharti
-              </li>
-              <li>
-                Yadav Rajneesh
-              </li>
-              <li>
-                Rajan kumar
-              </li>
-            </ul> */}
             <div className="mt-10 md:flex">
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
@@ -64,7 +50,7 @@ function About() {
                      <img src={Rajneesh} className="" alt="" />
                    </div>
                    <div className="card-body text-center">
-                     <h1 className="card-title text-rose-400">Yadav Rajneesh</h1>
+                     <h1 className="card-title text-rose-400">Rajneesh yadav</h1>
                      <p className="font-serif text-sm">Frontend Development</p>
                    </div>
               </div>
