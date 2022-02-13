@@ -10,6 +10,7 @@ function SubmitAns() {
   const profileData= JSON.parse(auth)
   const name= profileData.name; 
   const email= profileData.email; 
+  const userId = profileData._id; 
   const {id}= useParams();
   const queryId = id;
   let likes=0; 
@@ -18,7 +19,7 @@ function SubmitAns() {
     e.preventDefault(); 
     let answering = await fetch(`http://localhost:5000/answering`, {
       method:"post", 
-      body:JSON.stringify({queryId,answer, name,email,likes}),
+      body:JSON.stringify({queryId,answer, name,email, userId,likes}),
       headers: {
         "Content-Type": "application/json",
       },
@@ -56,12 +57,12 @@ function SubmitAns() {
 
   }
   return (
-    <div className=''>
+    <div className='bg-[#0e1e2c]'>
         <div>
         <QueryCard title={data.title} name={data.name} query={data.query} tags={data.tags} name={data.name} email={data.email} _id={data._id} />
         <div className='px-3 md:px-20'>
         {ansData.map((item)=>{
-          return <AnswerCard key={item._id} id={item._id} answer={item.answer} email={item.email} name={item.name} likes={item.likes} />
+          return <AnswerCard key={item._id} id={item._id} answer={item.answer} email={item.email} name={item.name} likes={item.likes} fetchAnswerFun={fetchAnswers} userId={item.userId}/>
         })}
 
         </div>
