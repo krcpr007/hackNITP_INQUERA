@@ -15,7 +15,7 @@ function Home() {
     fetchAllPolls();
   }, []);
   return (
-    <div className='bg-[#0e1e2c]'>
+    <div className=''>
       {data.map((item)=>{
         return <QueryCard key={item._id} name={item.name} title={item.title} query= {item.query} _id={item._id} tags={item.tags} email={item.email} />
       })}

@@ -65,6 +65,7 @@ app.post("/create-query", async (req, resp) => {
 });
 // all Query available on database
 app.get("/all-query", async (req, resp) => {
+
   let polls = await Polls.find({});
   if (polls) {
     resp.send(polls);
@@ -72,7 +73,7 @@ app.get("/all-query", async (req, resp) => {
     resp.send({ result: "Doesn't Have data" });
   }
 });
-// get all yours answers
+
 
 // answering the Query
 app.post("/answering", async (req, resp) => {
@@ -85,6 +86,7 @@ app.post("/answering", async (req, resp) => {
   }
   
 });
+// finding Query 
 app.get('/polls/:id', async(req,resp)=>{
   try {
     let polls = await Polls.findById({_id:req.params.id});
@@ -94,6 +96,7 @@ app.get('/polls/:id', async(req,resp)=>{
     resp.send({result:"not found"});
   }
 })
+// finding answer of particlur query
 app.get('/answers/:id', async(req, resp)=>{
   try {
     let answers = await Answers.find({queryId:req.params.id})
@@ -108,6 +111,7 @@ app.get('/answers/:id', async(req, resp)=>{
     
   }
 })
+// finding user particular query
 app.post('/yours-query', async(req,resp)=>{
   try {
     let yourQuery = await Polls.find(req.body)
@@ -118,4 +122,32 @@ app.post('/yours-query', async(req,resp)=>{
     
   }
 })
+// deleting query 
+app.delete('/delete-query/:id', async(req,resp)=>{
+  try {
+    let query = await Polls.findById({_id:req.params.id}); 
+    if(!query) return resp.send(404).send("Not Found")
+    query= await Polls.findByIdAndDelete(req.params.id)
+    resp.json({"msg":"Deleted",query:query})
+  } catch (error) {
+    console.log(error); 
+    resp.send("Something Went Wrong");
+  }
+})
+
+// Editing Query here 
+
+// Delete answer 
+app.delete('/delete-answer/:id', async(req,resp)=>{
+  try {
+    let answer = await Answers.findById({_id:req.params.id}); 
+    if(!answer) return resp.send(404).send("Not Found")
+    answer= await Answers.findByIdAndDelete(req.params.id)
+    resp.json({"msg":"Deleted",query:answer})
+  } catch (error) {
+    console.log(error); 
+    resp.send("Something Went Wrong");
+  }
+})
+
 app.listen(5000);
