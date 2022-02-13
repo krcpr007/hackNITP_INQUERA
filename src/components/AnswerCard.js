@@ -1,13 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import {FaHeart} from 'react-icons/fa';
 import {AiTwotoneDelete} from 'react-icons/ai';
 import {FiEdit} from 'react-icons/fi';  
 function AnswerCard({name, email ,answer,likes,id,fetchAnswerFun, userId}) {
+  const [newAns , setNewAns] = useState(answer);
   const auth = localStorage.getItem('inquera-user'); 
-  const profileData= JSON.parse(auth)
-  // const [yourAnser, setYourAnser] = useState(false); 
-  // if(userId == profileData._id) return setYourAnser(true);
+  const profileData= JSON.parse(auth);
   const DeleteAnswer = async() =>{
       console.log(id); 
       await fetch(`http://localhost:5000/delete-answer/${id}`, {
@@ -19,6 +18,21 @@ function AnswerCard({name, email ,answer,likes,id,fetchAnswerFun, userId}) {
    })
    fetchAnswerFun();
     toast.success("Deleted");
+  }
+  const updateAnswer = async ()=>{
+     
+    let update= await fetch(`http://localhost:5000/answer-edit/${id}`, {
+      method:"put",
+      body:JSON.stringify({answer:newAns}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    update=  await update.json(); 
+    if(update){
+      fetchAnswerFun();
+      toast.success("Updated");
+    }  
   }
   return (
     <>
@@ -36,9 +50,26 @@ function AnswerCard({name, email ,answer,likes,id,fetchAnswerFun, userId}) {
           <div className="flex">
           <button className="bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-1 px-2 border  hover:border-transparent rounded flex"> <FaHeart className="m-1"/> <span className=""> {likes} </span> </button>
            {
-             userId==profileData._id?(<>
-              <button className='bg-transparent m-1 hover:bg-blue-900  font-semibold hover:text-white py-1 px-2 border  hover:border-transparent rounded'><FiEdit/></button>
-            <button onClick={DeleteAnswer} className='bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-1 px-2 border  hover:border-transparent rounded'><AiTwotoneDelete/></button>
+             userId===profileData._id?(<>
+              <label for="my-modal-2" class="modal-button bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-2 border  hover:border-transparent rounded cursor-pointer ">
+              <FiEdit />
+              </label> 
+                <input type="checkbox" id="my-modal-2" class="modal-toggle"/> 
+                <div class="modal">
+                  <div class="modal-box">
+                   <form action="">
+                      <label className="input-group input-group-vertical input-group-lg">
+                      <span className='bg-slate-900'>Update your answer</span> 
+                      <textarea type="text" placeholder="Type Your answer" className="input input-bordered input-lg w-full h-24"  value={newAns} onChange={(e)=>setNewAns(e.target.value)} />
+                    </label>
+                     </form> 
+                    <div class="modal-action">
+                      <label for="my-modal-2" class="btn btn-primary" onClick={updateAnswer}>Update</label> 
+                      <label for="my-modal-2" class="btn">Close</label>
+                    </div>
+                  </div>
+                </div>
+              <button onClick={DeleteAnswer} className='bg-transparent m-1 hover:bg-blue-900 text-white font-semibold hover:text-white py-1 px-2 border  hover:border-transparent rounded'><AiTwotoneDelete/></button>
              </>):null
            }
           </div>
