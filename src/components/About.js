@@ -1,5 +1,6 @@
 import React from "react";
 import Rajan from './assets/Rajan.jpg'; 
+import Ayushi from './assets/Ayushi.png'; 
 import Rajneesh from './assets/Rajaneesh.jpg'; 
 import Payal from './assets/payalBharti.jpg';
 function About() {
@@ -42,38 +43,38 @@ function About() {
             <div className="mt-10 md:flex">
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
-                     <img src="https://avatars.githubusercontent.com/u/80947662?v=4" className="" alt="" />
+                     <img src={Ayushi} className="" alt="" />
                    </div>
                    <div className="card-body">
-                     <h1 className="card-title">Rajan Kumar</h1>
-                     <p>lorem ipsum </p>
+                     <h1 className="card-title text-rose-400">Ayushi Gupta</h1>
+                     <p className="font-serif text-sm">Team Leader, Frontend Development and UI Designing</p>
                    </div>
               </div>
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
-                     <img src="https://avatars.githubusercontent.com/u/80947662?v=4" className="" alt="" />
+                     <img src={Payal} className="" alt="" />
                    </div>
-                   <div className="card-body">
-                     <h1 className="card-title">Rajan Kumar</h1>
-                     <p>lorem ipsum </p>
+                   <div className="card-body text-center">
+                     <h1 className="card-title text-rose-400">Payal bharti</h1>
+                     <p className="font-serif text-sm">Frontend Development</p>
                    </div>
               </div>
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
-                     <img src="https://avatars.githubusercontent.com/u/80947662?v=4" className="" alt="" />
+                     <img src={Rajneesh} className="" alt="" />
                    </div>
-                   <div className="card-body">
-                     <h1 className="card-title">Rajan Kumar</h1>
-                     <p>lorem ipsum </p>
+                   <div className="card-body text-center">
+                     <h1 className="card-title text-rose-400">Yadav Rajneesh</h1>
+                     <p className="font-serif text-sm">Frontend Development</p>
                    </div>
               </div>
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
                      <img src={Rajan} className="" alt="" />
                    </div>
-                   <div className="card-body text-rose-400 text-center">
-                     <h1 className="card-title">Rajan Kumar</h1>
-                     <p className="font-serif">NiT Patna</p>
+                   <div className="card-body">
+                     <h1 className="card-title text-rose-400">Rajan Kumar</h1>
+                     <p className="font-serif text-sm">Full-Stack Development </p>
                    </div>
               </div>
              
