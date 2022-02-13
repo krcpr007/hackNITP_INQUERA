@@ -136,7 +136,28 @@ app.delete('/delete-query/:id', async(req,resp)=>{
 })
 
 // Editing Query here 
-
+app.put('/queryedit/:id',async(req,resp)=>{
+ try {
+  let updateQuery = await Polls.updateOne(
+    {_id:req.params.id}, 
+    {
+      $set:req.body
+    }
+  )
+  resp.send(updateQuery);
+ } catch (error) {
+   console.log(error)
+ }
+})
+// Edit answer 
+app.put('/answer-edit/:id',  async(req,resp)=>{
+    let editAnser = await Answers.updateOne(
+      {_id:req.params.id}, {
+        $set:req.body
+      }
+    )
+    resp.send(editAnser); 
+})
 // Delete answer 
 app.delete('/delete-answer/:id', async(req,resp)=>{
   try {
