@@ -19,7 +19,7 @@ function Footer() {
   <div>
     <span className="footer-title">Social Links</span> 
     <div className="grid grid-flow-col gap-4 text-[#FFE400]">
-      <a href='htpps://www.facebook.com'>
+      <a href='https://www.facebook.com'>
        <FaFacebookSquare size="30"/>
       </a> 
       <a href='https://www.youtube.com'>
