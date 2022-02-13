@@ -17,7 +17,7 @@ const Signup = () => {
         <div className="text-center lg:text-left">
           <h1 className="mb-5 text-5xl font-bold">
           <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
-            <h3 className="px-2 font-extrabold text-6xl font-serif flex">
+            <h3 className="px-2 font-extrabold text-6xl font-serif flex text-white">
               In
               <img src={logo} className="h-16" alt="logo" />
               uera
@@ -34,42 +34,42 @@ const Signup = () => {
             <form>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-white">Name</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Name"
-                  className="input input-warning input-bordered bg-[#0e1e2c]"
+                  className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="email"
                   placeholder="email"
-                  className="input input-warning input-bordered bg-[#0e1e2c]"
+                  className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={e=> setEmail(e.target.value)}
                   required
                 />
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="password"
-                  className="input input-warning input-bordered bg-[#0e1e2c]"
+                  className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={e=>setPassword(e.target.value)}
                   required
                   
                 />
                 <label className="label">
-                  <p className="label-text-alt">
+                  <p className="label-text-alt text-white">
                     Already have account? <Link to="/login">Login</Link>{" "}
                   </p>
                 </label>

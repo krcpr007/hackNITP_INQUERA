@@ -17,7 +17,7 @@ function Login() {
       <div className="flex-col justify-center hero-content lg:flex-row">
         <div className="text-center lg:text-left  md:px-20 mx-11">
           <h1 className="mb-5 text-5xl font-bold text-[#FFE400] text-center">Welcome to Inquera</h1>
-          <p className="mb-5 text-center">
+          <p className="mb-5 text-center text-white">
           bcoz every question has an answer...
           </p>
         </div>
@@ -26,11 +26,11 @@ function Login() {
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   placeholder="email"
-                  className="input input-warning input-bordered bg-[#0e1e2c]"
+                  className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -39,11 +39,11 @@ function Login() {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   placeholder="password"
-                  className="input input-warning input-bordered bg-[#0e1e2c]"
+                  className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}

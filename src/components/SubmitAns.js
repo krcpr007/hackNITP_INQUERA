@@ -71,7 +71,7 @@ function SubmitAns() {
                 <label className="label">
                 </label> 
                 <label className="input-group input-group-vertical input-group-lg">
-                  <span className='bg-slate-900'>Write your answer</span> 
+                  <span className='bg-slate-900 text-white'>Write your answer</span> 
                   <textarea type="text" placeholder="Type Your answer" className="input input-bordered input-lg w-full h-24" onChange={(e)=>setAnswer(e.target.value)}/>
                 </label>
               </div>

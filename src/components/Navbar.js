@@ -20,7 +20,7 @@ function Navbar() {
     menu.classList.toggle("hidden")
   }
   return (
-  <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl dark:bg-[#061229]">
+  <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl bg-[#061229]">
     <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex">
           <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white flex">
