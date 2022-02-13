@@ -49,3 +49,4 @@ npm start
 ```
 After running this command you can see the backend running on port 5000 and Reactjs on port 300
 ### Note
+Fronted and backend running on diffrent port and diffrent terminals
