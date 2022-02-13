@@ -24,7 +24,7 @@ function YoursQuery() {
   return (
     <>
      <div className=''>
-       {data.length==0?(<>
+       {data.length===0?(<>
          <div className='h-screen'>
            <h1 className='text-center text-xl md:text-4xl text-rose-400 font-serif'>
              Not posted any Query yet

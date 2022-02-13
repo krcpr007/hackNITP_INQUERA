@@ -31,7 +31,7 @@ function SubmitAns() {
       toast.success("Submited")
     }
   }
-  useEffect(async()=>{
+  useEffect(()=>{
     fetchQuery();
     fetchAnswers();
   },[])
@@ -59,12 +59,11 @@ function SubmitAns() {
   return (
     <div className='bg-[#0e1e2c]'>
         <div>
-        <QueryCard title={data.title} name={data.name} query={data.query} tags={data.tags} name={data.name} email={data.email} _id={data._id} />
+        <QueryCard title={data.title} name={data.name} query={data.query} tags={data.tags} email={data.email} _id={data._id} />
         <div className='px-3 md:px-20'>
         {ansData.map((item)=>{
           return <AnswerCard key={item._id} id={item._id} answer={item.answer} email={item.email} name={item.name} likes={item.likes} fetchAnswerFun={fetchAnswers} userId={item.userId}/>
         })}
-
         </div>
             <div className='container px-10 md:px-40  md:py-10'>
               <form>
@@ -81,7 +80,6 @@ function SubmitAns() {
             </div>
         </div>
     </div>
-
   )
 }
 

@@ -17,7 +17,6 @@ function Navbar() {
   }
   const menu = document.getElementById("#btn");
   const handleMobileView =()=>{
-    
     menu.classList.toggle("hidden")
   }
   return (
