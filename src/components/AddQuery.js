@@ -34,7 +34,7 @@ function AddQuery() {
     <>
     <div className='bg-[#0e1e2c]'>
         <div>
-          <h1 className='text-xl md:text-3xl pt-3 text-center'>Enter your Query or anything </h1>
+          <h1 className='text-xl md:text-3xl pt-3 text-center'>Ask your Query or anything </h1>
         </div>
         <div className="p-5 md:p-10 md:flex ">
         <div className='card-body rounded-3xl bg-slate-800 shadow-2xl lg:w-[40rem]  '>
@@ -59,14 +59,15 @@ function AddQuery() {
           </div>
         </div>
         <div className='m-5 md:p-10 lg:w-1/2 '>
-          <h3 className='px-2 font-extrabold text-xl md:text-2xl font-serif text-yellow-400'>Community Rules</h3>
-            <ul className='pl-7 text-xl list-disc'>
+          <h3 className='px-2 font-extrabold text-xl md:text-2xl font-serif text-yellow-400 underline'>Community Rules</h3>
+            <ul className='pl-7 text-xl list-disc text-gray-400'>
               <li>Stay on topic</li>
               <li>Don't upload or post inappropriate content.</li>
               <li>Stay on topic</li>
               <li>Keep it legal.</li>
               <li>Respect Privacy</li>
               <li>Stay on topic</li>
+              <li>Please Add <span className='text-rose-500 font-extrabold'>?</span> in Your query</li>
             </ul>
         </div>
         </div>

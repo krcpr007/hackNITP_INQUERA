@@ -1,4 +1,7 @@
 import React from "react";
+import Rajan from './assets/Rajan.jpg'; 
+import Rajneesh from './assets/Rajaneesh.jpg'; 
+import Payal from './assets/payalBharti.jpg';
 function About() {
   return (
   <> 
@@ -66,11 +69,11 @@ function About() {
               </div>
               <div className="card md:w-1/6  rounded-lg bg-slate-900 md:mx-12">
                    <div>
-                     <img src="https://avatars.githubusercontent.com/u/80947662?v=4" className="" alt="" />
+                     <img src={Rajan} className="" alt="" />
                    </div>
-                   <div className="card-body">
+                   <div className="card-body text-rose-400 text-center">
                      <h1 className="card-title">Rajan Kumar</h1>
-                     <p>lorem ipsum </p>
+                     <p className="font-serif">NiT Patna</p>
                    </div>
               </div>
              
