@@ -7,6 +7,7 @@ const Polls = require("./models/Polls");
 const Answers = require("./models/Answers");
 app.use(express.json());
 app.use(cors());
+const bcrypt = require('bcryptjs');
 const PORT = process.env.PORT || 5000
 app.get("/", (req, resp) => {
   resp.send("App is Working");
@@ -16,22 +17,21 @@ app.post("/register", async (req, resp) => {
   try {
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      return resp
-        .status(400)
-        .json({
-          success: false,
-          Msg: "Email already exists",
-        });
+      return resp.status(400).json({ success: false, Msg: "Email already exists", });
     }
-    else {
-      const newUser = new User(req.body);
-      let result = await newUser.save();
-      result = result.toObject();
-      if (result) {
-        delete result.password;
-        return resp.status(200).json({ resp: req.body , success:true,Msg:"Login Successfully"});
-        // console.log(req.body);
-      }
+    /// generating password hash
+    const salt = await bcrypt.genSalt(10);
+    let secPass = await bcrypt.hash(req.body.password, salt);
+    const newUser = new User({
+      name: req.body.name,
+      password: secPass,
+      email: req.body.email,
+    });
+    let result = await newUser.save();
+    result = result.toObject();
+    if (result) {
+      delete result.password;
+      return resp.status(200).json({ _id: result._id.toString(), name: req.body.name, email: req.body.email, success: true, Msg: "Login Successfully" })
     }
   } catch (e) {
     resp.send("Something Went Wrong");
@@ -39,20 +39,36 @@ app.post("/register", async (req, resp) => {
 });
 //   login existed user
 app.post("/login", async (req, resp) => {
+  const { email, password } = req.body;
   try {
-    if (req.body.password && req.body.email) {
-      let user = await User.findOne(req.body).select("-password");
-      if (user) {
-        resp.send(user);
-      } else {
-        resp.send({ result: "No user found" });
-      }
-    } else {
-      resp.send({ result: "No user found" });
+    let user = await User.findOne({ email });
+    if (!user) {
+      return resp.status(400).json({ Msg: "User not found" });
     }
+    const passwordCompare = await bcrypt.compare(password, user.password);
+    if (!passwordCompare) {
+      return resp.status(400).json({ success: false, Msg: "sorry use correct email or password" });
+    }
+    resp.send(user);
   } catch (error) {
-    resp.send({ result: "No user found" });
+    console.log(error);
+    resp.status(400).json({ success: false, Msg: "Something went wrong" });
+
   }
+  // try {
+  //   if (req.body.password && req.body.email) {
+  //     let user = await User.findOne({ email: req.body.email }).select("-password");
+  //     if (user) {
+  //       resp.send(user);
+  //     } else {
+  //       resp.send({ result: "No user found" });
+  //     }
+  //   } else {
+  //     resp.send({ result: "No user found" });
+  //   }
+  // } catch (error) {
+  //   resp.send({ result: "No user found" });
+  // }
 });
 
 // api for add new Query
