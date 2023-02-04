@@ -41,6 +41,7 @@ const Signup = () => {
                   placeholder="Name"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   autoComplete="on"
+                  name="name"
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
@@ -53,6 +54,7 @@ const Signup = () => {
                   type="email"
                   placeholder="Email"
                   autoComplete="on"
+                  name="email"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={e=> setEmail(e.target.value)}
                   required
@@ -64,6 +66,7 @@ const Signup = () => {
                 </label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="Password"
                   autoComplete="on"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
@@ -78,7 +81,7 @@ const Signup = () => {
                 </label>
               </div>
               <div className="form-control mt-5">
-                <button type="subtmit" className="btn glass bg-[#04293A]" onClick={HandleUserSignUp}>
+                <button type="submit" className="btn glass bg-[#04293A]" onClick={HandleUserSignUp}>
                   SignUp
                 </button>
               </div>
