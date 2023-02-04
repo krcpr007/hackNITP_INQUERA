@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require('dotenv').config()
 require("./db/config");
 const User = require("./models/User");
 const cors = require("cors");
@@ -10,7 +11,7 @@ app.use(cors());
 const bcrypt = require('bcryptjs');
 const PORT = process.env.PORT || 5000
 app.get("/", (req, resp) => {
-  resp.send("App is Working");
+  resp.send("InQuera App is Working");
 });
 // Create a new user
 app.post("/register", async (req, resp) => {
@@ -55,20 +56,6 @@ app.post("/login", async (req, resp) => {
     resp.status(400).json({ success: false, Msg: "Something went wrong" });
 
   }
-  // try {
-  //   if (req.body.password && req.body.email) {
-  //     let user = await User.findOne({ email: req.body.email }).select("-password");
-  //     if (user) {
-  //       resp.send(user);
-  //     } else {
-  //       resp.send({ result: "No user found" });
-  //     }
-  //   } else {
-  //     resp.send({ result: "No user found" });
-  //   }
-  // } catch (error) {
-  //   resp.send({ result: "No user found" });
-  // }
 });
 
 // api for add new Query
