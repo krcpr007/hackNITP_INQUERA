@@ -29,9 +29,10 @@ function Login() {
                   <span className="label-text text-white">Email</span>
                 </label>
                 <input
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   type="email"
+                  autoComplete="on"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   required
@@ -42,9 +43,10 @@ function Login() {
                   <span className="label-text text-white">Password</span>
                 </label>
                 <input
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   type="password"
+                  autoComplete="on"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
@@ -63,7 +65,7 @@ function Login() {
                   type="submit"
                   value="Login"
                   onClick={handleLogin}
-                  className="btn btn glass bg-[#04293A] "
+                  className="btn glass bg-[#04293A] "
                 >
                   Login
                 </button>

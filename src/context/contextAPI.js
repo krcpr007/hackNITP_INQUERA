@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 const ContextAPI = createContext();
 export function PollsHubContextProvider({ children }) {
   const navigate = useNavigate();
-  // signup
+  // signup function 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const CollectData = async (e) => {
+  const HandleUserSignUp = async (e) => {
     e.preventDefault();
-    console.warn(name, email, password);
+    // console.warn(name, email, password);
     let result = await fetch("http://localhost:5000/register", {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
@@ -19,16 +19,17 @@ export function PollsHubContextProvider({ children }) {
       },
     });
     result = await result.json();
-    console.warn(result);
-    localStorage.setItem("inquera-user", JSON.stringify(result));
-    if (result) {
+    // console.warn(result);
+    if (result.success) {
+      // console.log(result);
+      localStorage.setItem("inquera-user", JSON.stringify(result.resp));
       navigate("/");
       toast.success("SignUp successfully");
     } else {
       toast.error("Email already registered");
     }
   };
-  //    login
+  //    login function 
   const handleLogin = async (e) => {
     e.preventDefault();
     let result = await fetch("http://localhost:5000/login", {
@@ -39,11 +40,12 @@ export function PollsHubContextProvider({ children }) {
       },
     });
     result = await result.json();
-    console.warn(result);
+    // console.warn(result);
     if (result.name) {
+
       localStorage.setItem("inquera-user", JSON.stringify(result));
       navigate("/");
-      toast.success("Loged In succesfully");
+      toast.success("LoggedIn In successfully");
       setEmail("");
       setPassword("");
     } else {
@@ -56,7 +58,7 @@ export function PollsHubContextProvider({ children }) {
   return (
     <ContextAPI.Provider
       value={{
-        CollectData,
+        HandleUserSignUp,
         handleLogin,
         email,
         password,

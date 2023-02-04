@@ -3,10 +3,10 @@ import { Link , useNavigate} from "react-router-dom";
 import ContextAPI from "../context/contextAPI";
 import logo from "./logo.png";
 const Signup = () => {
-  const {CollectData ,setName , setEmail,setPassword} = useContext(ContextAPI); 
+  const {HandleUserSignUp ,setName , setEmail,setPassword} = useContext(ContextAPI); 
   const navigate =useNavigate(); 
     useEffect(() => {
-        const auth = localStorage.getItem('pollshub-user'); 
+        const auth = localStorage.getItem('inquera-user');
         if(auth){
           navigate('/')
         }
@@ -40,6 +40,7 @@ const Signup = () => {
                   type="text"
                   placeholder="Name"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
+                  autoComplete="on"
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
@@ -50,7 +51,8 @@ const Signup = () => {
                 </label>
                 <input
                   type="email"
-                  placeholder="email"
+                  placeholder="Email"
+                  autoComplete="on"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={e=> setEmail(e.target.value)}
                   required
@@ -62,7 +64,8 @@ const Signup = () => {
                 </label>
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Password"
+                  autoComplete="on"
                   className="input input-warning input-bordered bg-[#0e1e2c] text-white"
                   onChange={e=>setPassword(e.target.value)}
                   required
@@ -75,7 +78,7 @@ const Signup = () => {
                 </label>
               </div>
               <div className="form-control mt-5">
-                <button type="subtmit" className="btn btn glass bg-[#04293A]" onClick={CollectData}>
+                <button type="subtmit" className="btn glass bg-[#04293A]" onClick={HandleUserSignUp}>
                   SignUp
                 </button>
               </div>
