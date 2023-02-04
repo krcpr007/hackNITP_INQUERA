@@ -5,9 +5,9 @@ const User = require("./models/User");
 const cors = require("cors");
 const Polls = require("./models/Polls");
 const Answers = require("./models/Answers");
-console.log("App listen at port 5000");
 app.use(express.json());
 app.use(cors());
+const PORT = process.env.PORT || 5000
 app.get("/", (req, resp) => {
   resp.send("App is Working");
 });
@@ -19,17 +19,19 @@ app.post("/register", async (req, resp) => {
       return resp
         .status(400)
         .json({
-          success,
-          error: "Sorry a user with this email already exists",
+          success: false,
+          Msg: "Email already exists",
         });
     }
-    newUser = new User(req.body);
-    let result = await newUser.save();
-    result = result.toObject();
-    if (result) {
-      delete result.password;
-      resp.send(req.body);
-      console.log(result);
+    else {
+      const newUser = new User(req.body);
+      let result = await newUser.save();
+      result = result.toObject();
+      if (result) {
+        delete result.password;
+        return resp.status(200).json({ resp: req.body , success:true,Msg:"Login Successfully"});
+        // console.log(req.body);
+      }
     }
   } catch (e) {
     resp.send("Something Went Wrong");
@@ -84,91 +86,93 @@ app.post("/answering", async (req, resp) => {
   } catch (error) {
     resp.send("Error");
   }
-  
+
 });
 // finding Query 
-app.get('/polls/:id', async(req,resp)=>{
+app.get('/polls/:id', async (req, resp) => {
   try {
-    let polls = await Polls.findById({_id:req.params.id});
+    let polls = await Polls.findById({ _id: req.params.id });
     resp.send(polls);
   } catch (error) {
     console.log(error);
-    resp.send({result:"not found"});
+    resp.send({ result: "not found" });
   }
 })
-// finding answer of particlur query
-app.get('/answers/:id', async(req, resp)=>{
+// finding answer of particular query
+app.get('/answers/:id', async (req, resp) => {
   try {
-    let answers = await Answers.find({queryId:req.params.id})
-    if(answers){
+    let answers = await Answers.find({ queryId: req.params.id })
+    if (answers) {
 
-      resp.send(answers); 
-    }else{
-      resp.send({result:"not found"}); 
+      resp.send(answers);
+    } else {
+      resp.send({ result: "not found" });
     }
   } catch (error) {
-    console.log(error); 
-    
+    console.log(error);
+
   }
 })
 // finding user particular query
-app.post('/yours-query', async(req,resp)=>{
+app.post('/yours-query', async (req, resp) => {
   try {
     let yourQuery = await Polls.find(req.body)
-    if(yourQuery){
-      resp.send(yourQuery); 
+    if (yourQuery) {
+      resp.send(yourQuery);
     }
   } catch (error) {
-    
+
   }
 })
 // deleting query 
-app.delete('/delete-query/:id', async(req,resp)=>{
+app.delete('/delete-query/:id', async (req, resp) => {
   try {
-    let query = await Polls.findById({_id:req.params.id}); 
-    if(!query) return resp.send(404).send("Not Found")
-    query= await Polls.findByIdAndDelete(req.params.id)
-    resp.json({"msg":"Deleted",query:query})
+    let query = await Polls.findById({ _id: req.params.id });
+    if (!query) return resp.send(404).send("Not Found")
+    query = await Polls.findByIdAndDelete(req.params.id)
+    resp.json({ "msg": "Deleted", query: query })
   } catch (error) {
-    console.log(error); 
+    console.log(error);
     resp.send("Something Went Wrong");
   }
 })
 
 // Editing Query here 
-app.put('/queryedit/:id',async(req,resp)=>{
- try {
-  let updateQuery = await Polls.updateOne(
-    {_id:req.params.id}, 
-    {
-      $set:req.body
-    }
-  )
-  resp.send(updateQuery);
- } catch (error) {
-   console.log(error)
- }
-})
-// Edit answer 
-app.put('/answer-edit/:id',  async(req,resp)=>{
-    let editAnser = await Answers.updateOne(
-      {_id:req.params.id}, {
-        $set:req.body
+app.put('/queryedit/:id', async (req, resp) => {
+  try {
+    let updateQuery = await Polls.updateOne(
+      { _id: req.params.id },
+      {
+        $set: req.body
       }
     )
-    resp.send(editAnser); 
+    resp.send(updateQuery);
+  } catch (error) {
+    console.log(error)
+  }
+})
+// Edit answer 
+app.put('/answer-edit/:id', async (req, resp) => {
+  let editAnswer = await Answers.updateOne(
+    { _id: req.params.id }, {
+    $set: req.body
+  }
+  )
+  resp.send(editAnswer);
 })
 // Delete answer 
-app.delete('/delete-answer/:id', async(req,resp)=>{
+app.delete('/delete-answer/:id', async (req, resp) => {
   try {
-    let answer = await Answers.findById({_id:req.params.id}); 
-    if(!answer) return resp.send(404).send("Not Found")
-    answer= await Answers.findByIdAndDelete(req.params.id)
-    resp.json({"msg":"Deleted",query:answer})
+    let answer = await Answers.findById({ _id: req.params.id });
+    if (!answer) return resp.send(404).send("Not Found")
+    answer = await Answers.findByIdAndDelete(req.params.id)
+    resp.json({ "msg": "Deleted", query: answer })
   } catch (error) {
-    console.log(error); 
+    console.log(error);
     resp.send("Something Went Wrong");
   }
 })
 
-app.listen(5000);
+app.listen(PORT, () => {
+  console.log("App listen at port 5000");
+});
