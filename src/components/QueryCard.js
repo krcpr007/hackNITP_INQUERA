@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourQueriesFun}) {
   const [Query , SetUpdatedQuery] = useState(query);
   const handleDeleteQuery= async()=>{
-    await fetch(`http://localhost:5000/delete-query/${_id}`, {
+    await fetch(`https://inquera.onrender.com/delete-query/${_id}`, {
      method:"Delete", 
      headers:{
        'Content-Type':'application/json'
@@ -19,7 +19,7 @@ function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourQueries
   }
   const updateQuery = async ()=>{
      
-    let update= await fetch(`http://localhost:5000/queryedit/${_id}`, {
+    let update= await fetch(`https://inquera.onrender.com/queryedit/${_id}`, {
       method:"put",
       body:JSON.stringify({query:Query}),
       headers: {

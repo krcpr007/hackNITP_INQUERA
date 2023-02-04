@@ -10,7 +10,7 @@ export function PollsHubContextProvider({ children }) {
   const [password, setPassword] = useState("");
   const HandleUserSignUp = async (e) => {
     e.preventDefault();
-    let result = await fetch("http://localhost:5000/register", {
+    let result = await fetch("https://inquera.onrender.com/register", {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
       headers: {
@@ -18,19 +18,23 @@ export function PollsHubContextProvider({ children }) {
       },
     });
     result = await result.json();
-    console.log(result);
     if (result.success) {
       localStorage.setItem("inquera-user", JSON.stringify(result));
       navigate("/");
       toast.success("SignUp successfully");
+      setName("");
+      setEmail("");
+      setPassword('');
     } else {
       toast.error("Email already registered");
+      setEmail("");
+      setPassword('');
     }
   };
   //    login function 
   const handleLogin = async (e) => {
     e.preventDefault();
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch("https://inquera.onrender.com/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {

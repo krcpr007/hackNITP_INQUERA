@@ -17,7 +17,7 @@ function SubmitAns() {
   const [data, setData] = useState({});
   const submitAnswer = async (e) => {
     e.preventDefault();
-    let answering = await fetch(`http://localhost:5000/answering`, {
+    let answering = await fetch(`https://inquera.onrender.com/answering`, {
       method: "post",
       body: JSON.stringify({ queryId, answer, name, email, userId, likes }),
       headers: {
@@ -37,7 +37,7 @@ function SubmitAns() {
     fetchAnswers();
   }, [])
   const fetchQuery = async () => {
-    await fetch(`http://localhost:5000/polls/${id}`)
+    await fetch(`https://inquera.onrender.com/polls/${id}`)
       .then((resp) => resp.json())
       .then((data) => {
         setData(data);
@@ -46,7 +46,7 @@ function SubmitAns() {
       })
   }
   const fetchAnswers = async () => {
-    await fetch(`http://localhost:5000/answers/${id}`)
+    await fetch(`https://inquera.onrender.com/answers/${id}`)
       .then((resp) => resp.json())
       .then((ansData) => {
         setAnsData(ansData);

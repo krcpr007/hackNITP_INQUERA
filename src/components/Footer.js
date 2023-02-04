@@ -3,8 +3,7 @@ import {FaFacebookSquare, FaTwitterSquare} from 'react-icons/fa'
 import {FaYoutubeSquare} from 'react-icons/fa';
 import logo from './logo.png'
 function Footer() {
-    const date= new Date()
-    const year = date.getFullYear(); 
+ 
   return (
     <footer className="p-10 footer bg-slate-900 text-neutral-content">
   <div>
@@ -13,7 +12,7 @@ function Footer() {
             <h3 className="px-2 font-extrabold text-3xl font-serif flex">In<img src={logo} className="h-8" alt='logo' />uera</h3>
           </span>
     <p className='font-medium text-[#FFE400]'>Inquera Pvt Ltd.
-      <br/>All copyrights reseverd @Inquera {year}
+      <br/>All copyrights reserved @Inquera {'2022'}
     </p>
   </div> 
   <div>

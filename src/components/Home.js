@@ -4,10 +4,9 @@ import QueryCard from './QueryCard.js';
 function Home() {
   const [data, setData] = useState([]);
   const fetchAllPolls = async () => {
-    fetch(`http://localhost:5000/all-query`)
+    fetch(`https://inquera.onrender.com/all-query`)
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data);
         setData(data);
       });
   };

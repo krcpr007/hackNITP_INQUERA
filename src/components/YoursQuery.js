@@ -7,7 +7,7 @@ function YoursQuery() {
   const userId= profileData._id; 
   const [data, setData] = useState([]);
   const yourQueries = async ()=>{
-    let result =    await fetch(`http://localhost:5000/yours-query`,{
+    let result =    await fetch(`https://inquera.onrender.com/yours-query`,{
       method:"post", 
       body:JSON.stringify({userId}),
       headers: {

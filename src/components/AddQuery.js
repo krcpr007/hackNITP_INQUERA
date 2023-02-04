@@ -16,7 +16,7 @@ function AddQuery() {
     const { title, query, tags } = queryForm;
     e.preventDefault();
     try {
-      let result = await fetch(`http://localhost:5000/create-query`, {
+      let result = await fetch(`https://inquera.onrender.com/create-query`, {
         method: "post",
         body: JSON.stringify({ title, query, tags, name, email, userId }),
         headers: {

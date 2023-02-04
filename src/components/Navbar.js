@@ -7,7 +7,7 @@ function Navbar() {
   const auth = localStorage.getItem("inquera-user");
   const handleLogout = () => {
       localStorage.removeItem('inquera-user'); 
-      toast.success("Log out succesfully")
+      toast.success("Log out successfully")
       navigate('/login')
   }
   const pathMatchRoute= (route)=>{

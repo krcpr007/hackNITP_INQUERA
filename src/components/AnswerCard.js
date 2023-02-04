@@ -10,7 +10,7 @@ function AnswerCard({ name, email, answer, likes, id, fetchAnswerFun, userId }) 
   const DeleteAnswer = async () => {
     const yes = window.confirm("Are you sure want to delete?")
     if (yes) {
-      await fetch(`http://localhost:5000/delete-answer/${id}`, {
+      await fetch(`https://inquera.onrender.com/delete-answer/${id}`, {
         method: "Delete",
         headers: {
           'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function AnswerCard({ name, email, answer, likes, id, fetchAnswerFun, userId }) 
   const updateAnswer = async () => {
     const yes = window.confirm("Are you sure want to Update?")
     if (yes) {
-      let update = await fetch(`http://localhost:5000/answer-edit/${id}`, {
+      let update = await fetch(`https://inquera.onrender.com/answer-edit/${id}`, {
         method: "put",
         body: JSON.stringify({ answer: newAns }),
         headers: {
