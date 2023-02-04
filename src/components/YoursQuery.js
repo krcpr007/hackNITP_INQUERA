@@ -15,10 +15,9 @@ function YoursQuery() {
       },
      })
      result = await result.json();
-     console.log(result);
      setData(result);
   }
-  useEffect(async()=>{
+  useEffect(()=>{
     yourQueries();
   },[])
   return (
@@ -33,7 +32,7 @@ function YoursQuery() {
        </>):null}
        <div>
          {data.map((item)=>{
-            return <QueryCard key={item._id} title={item.title} query={item.query} _id={item._id} name={item.name} YoursQuery={true} yourqueriesFun={yourQueries} tags={item.tags} />
+            return <QueryCard key={item._id} title={item.title} query={item.query} _id={item._id} name={item.name} YoursQuery={true} yourQueriesFun={yourQueries} tags={item.tags} />
          })}
        </div>
      </div>

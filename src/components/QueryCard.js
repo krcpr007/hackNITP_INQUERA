@@ -4,10 +4,9 @@ import { FaHeart } from 'react-icons/fa';
 import {FiEdit} from 'react-icons/fi'; 
 import {Link } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
-function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourqueriesFun}) {
+function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourQueriesFun}) {
   const [Query , SetUpdatedQuery] = useState(query);
   const handleDeleteQuery= async()=>{
-    console.log(_id);
     await fetch(`http://localhost:5000/delete-query/${_id}`, {
      method:"Delete", 
      headers:{
@@ -16,7 +15,7 @@ function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourqueries
      
    })
     toast.success("Deleted");
-    yourqueriesFun();
+    yourQueriesFun();
   }
   const updateQuery = async ()=>{
      
@@ -29,7 +28,7 @@ function QueryCard({title,query, tags, name, email ,_id, YoursQuery ,yourqueries
     })
     update=  await update.json(); 
     if(update){
-      yourqueriesFun();
+      yourQueriesFun();
       toast.success("Updated");
     }  
   }

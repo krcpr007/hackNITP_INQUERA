@@ -10,7 +10,6 @@ export function PollsHubContextProvider({ children }) {
   const [password, setPassword] = useState("");
   const HandleUserSignUp = async (e) => {
     e.preventDefault();
-    // console.warn(name, email, password);
     let result = await fetch("http://localhost:5000/register", {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
@@ -19,10 +18,9 @@ export function PollsHubContextProvider({ children }) {
       },
     });
     result = await result.json();
-    // console.warn(result);
+    console.log(result);
     if (result.success) {
-      // console.log(result);
-      localStorage.setItem("inquera-user", JSON.stringify(result.resp));
+      localStorage.setItem("inquera-user", JSON.stringify(result));
       navigate("/");
       toast.success("SignUp successfully");
     } else {
@@ -40,16 +38,13 @@ export function PollsHubContextProvider({ children }) {
       },
     });
     result = await result.json();
-    // console.warn(result);
     if (result.name) {
-
       localStorage.setItem("inquera-user", JSON.stringify(result));
       navigate("/");
       toast.success("LoggedIn In successfully");
       setEmail("");
       setPassword("");
     } else {
-      // alert("please enter correct details");
       toast.error("Please Enter correct Details");
       setEmail("");
       setPassword("");

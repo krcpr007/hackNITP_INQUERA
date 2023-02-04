@@ -10,7 +10,6 @@ function AnswerCard({ name, email, answer, likes, id, fetchAnswerFun, userId }) 
   const DeleteAnswer = async () => {
     const yes = window.confirm("Are you sure want to delete?")
     if (yes) {
-      // console.log(id); 
       await fetch(`http://localhost:5000/delete-answer/${id}`, {
         method: "Delete",
         headers: {
