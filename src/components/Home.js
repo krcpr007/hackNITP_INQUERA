@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import QueryCard from './QueryCard.js';
-
+import Loader from './Loader.js';
 function Home() {
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(false);
   const fetchAllPolls = async () => {
+    setLoader(true);
     fetch(`https://inquera.onrender.com/all-query`)
       .then((resp) => resp.json())
       .then((data) => {
         setData(data);
+        setLoader(false); 
       });
   };
   useEffect(() => {
     fetchAllPolls();
   }, []);
+  if(loader){
+    return <Loader />
+  }
   return (
     <div className=''>
       {data.length === 0 ? <>
