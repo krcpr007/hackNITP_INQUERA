@@ -7,41 +7,54 @@ import { toast } from 'react-toastify';
 function QueryCard({ title, query, tags, name, email, _id, YoursQuery, yourQueriesFun }) {
   const [Query, SetUpdatedQuery] = useState(query);
   const handleDeleteQuery = async () => {
-    await fetch(`https://inquera.onrender.com/delete-query/${_id}`, {
-      method: "Delete",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
+    try {
+      await fetch(`https://inquera.onrender.com/delete-query/${_id}`, {
+        method: "Delete",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
 
-    deleteAllTheAnswers(_id);
-    toast.success("Deleted");
-    yourQueriesFun();
+      deleteAllTheAnswers(_id);
+      toast.success("Deleted");
+      yourQueriesFun();
+    } catch (error) {
+      console.log(error)
+      toast.error("Something went wrong")
+    }
   }
   // function for deleting all the answers associated with particular question which is or will be delete
   const deleteAllTheAnswers = async (_id) => {
-    await fetch(`https://inquera.onrender.com/delete-query-answers/${_id}`, {
-      method: "Delete",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    try {
+      await fetch(`https://inquera.onrender.com/delete-query-answers/${_id}`, {
+        method: "Delete",
+        headers: {
+          'Content-Type': 'application/json'
+        },
 
-    })
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
-  
+
   const updateQuery = async () => {
 
-    let update = await fetch(`https://inquera.onrender.com/queryedit/${_id}`, {
-      method: "put",
-      body: JSON.stringify({ query: Query }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    update = await update.json();
-    if (update) {
-      yourQueriesFun();
-      toast.success("Updated");
+    try {
+      let update = await fetch(`https://inquera.onrender.com/queryedit/${_id}`, {
+        method: "put",
+        body: JSON.stringify({ query: Query }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      update = await update.json();
+      if (update) {
+        yourQueriesFun();
+        toast.success("Updated");
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
   return (
