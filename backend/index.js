@@ -7,10 +7,10 @@ const cors = require("cors");
 const Polls = require("./models/Polls");
 const Answers = require("./models/Answers");
 app.use(express.json());
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
+const corsOptions = {
+  origin: '*',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
 }
 app.use(cors(corsOptions)) // Use this after the variable declaration
 const bcrypt = require('bcryptjs');
@@ -174,7 +174,20 @@ app.delete('/delete-answer/:id', async (req, resp) => {
     let answer = await Answers.findById({ _id: req.params.id });
     if (!answer) return resp.send(404).send("Not Found")
     answer = await Answers.findByIdAndDelete(req.params.id)
-    resp.json({ "msg": "Deleted", query: answer })
+    resp.json({ Msg: "Deleted", query: answer })
+  } catch (error) {
+    console.log(error);
+    resp.send("Something Went Wrong");
+  }
+})
+
+//Delete all the answers of the query if query is deleted 
+app.delete('/delete-query-answers/:id', async (req, resp) => {
+  try {
+    let answers = await Answers.find({ queryId: req.params.id })
+    if (!answers) return resp.send(404).send("Not Found")
+    answers = await Answers.deleteMany({ queryId: req.params.id })
+    resp.json({ Msg: "Deleted All the answers", query: answers })
   } catch (error) {
     console.log(error);
     resp.send("Something Went Wrong");
