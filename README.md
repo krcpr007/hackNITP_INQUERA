@@ -1,7 +1,8 @@
-# InQuera ## Team WIZARD
-Youtube video link: https://youtu.be/bZxzDV9bH6o
+# InQuera 
+## Team WIZARD - HackNITP 4.0
+Youtube video link: <a href="https://youtu.be/bZxzDV9bH6o" target="_blank">Youtube video</a>
 
-PPT link: https://docs.google.com/presentation/d/1Zt2D-DKPrSM32SDMJQnaymG3YyG6-hKY/edit?usp=sharing&ouid=102795968430344903675&rtpof=true&sd=true
+PPT link: <a href="https://docs.google.com/presentation/d/1Zt2D-DKPrSM32SDMJQnaymG3YyG6-hKY/edit?usp=sharing&ouid=102795968430344903675&rtpof=true&sd=true" target="_blank">PPT </a>
 
 ## Dependencies for frontend (Reactjs)
 ```
@@ -22,14 +23,16 @@ PPT link: https://docs.google.com/presentation/d/1Zt2D-DKPrSM32SDMJQnaymG3YyG6-h
 ## Dependencies for Backend (Nodejs)
 ```
 "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.1"
   } 
 ```
 
-
+For locally setting this project run these commands
 ``` 
 git clone https://github.com/krcpr007/hackNITP_INQUERA.git
 
@@ -41,12 +44,14 @@ cd backend
 
 npm install 
 
-npm start 
+nodemon index.js
+
 ```
-open new terminal  
-``` 
-npm start
+open new terminal for frontend and run these commands
 ```
-After running this command you can see the backend running on port 5000 and Reactjs on port 300
+npm run start
+```
+
+After running this command you can see the backend running on port 5000 and ReactJS on port 300
 ### Note
-Fronted and backend running on diffrent port and diffrent terminals
+Fronted and backend running on different port and different terminals
