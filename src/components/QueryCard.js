@@ -7,21 +7,24 @@ import { toast } from 'react-toastify';
 function QueryCard({ title, query, tags, name, email, _id, YoursQuery, yourQueriesFun }) {
   const [Query, SetUpdatedQuery] = useState(query);
   const handleDeleteQuery = async () => {
-    try {
-      await fetch(`https://inquera.onrender.com/delete-query/${_id}`, {
-        method: "Delete",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-
-      deleteAllTheAnswers(_id);
-      toast.success("Deleted");
-      yourQueriesFun();
-    } catch (error) {
-      console.log(error)
-      toast.error("Something went wrong")
+    const yes = window.confirm("Are you sure want to delete?")
+    if (yes) {
+      try {
+        await fetch(`https://inquera.onrender.com/delete-query/${_id}`, {
+          method: "Delete",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        deleteAllTheAnswers(_id);
+        toast.success("Deleted successfully");
+        yourQueriesFun();
+      } catch (error) {
+        console.log(error)
+        toast.error("Something went wrong")
+      }
     }
+
   }
   // function for deleting all the answers associated with particular question which is or will be delete
   const deleteAllTheAnswers = async (_id) => {
@@ -36,10 +39,10 @@ function QueryCard({ title, query, tags, name, email, _id, YoursQuery, yourQueri
     } catch (error) {
       console.log(error)
     }
+
   }
 
   const updateQuery = async () => {
-
     try {
       let update = await fetch(`https://inquera.onrender.com/queryedit/${_id}`, {
         method: "put",
